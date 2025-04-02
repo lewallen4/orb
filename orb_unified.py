@@ -6,6 +6,7 @@ import socket
 import random
 import select
 import time
+import os
 import logging
 from collections import deque
 from Crypto.Cipher import AES
@@ -696,6 +697,49 @@ class OrbApp:
         finally:
             test_socket.close()
     
+    def get_local_ip(self):
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.connect(("8.8.8.8", 80))
+            ip = s.getsockname()[0]
+            s.close()
+            return ip
+        except Exception as e:
+            self.log(f"Could not determine local IP: {str(e)}", 'warning')
+            return "127.0.0.1"
+            
+    def get_public_ip(self):
+        """Get public IP using a simple service"""
+        try:
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                s.settimeout(3)
+                s.connect(("api.ipify.org", 80))
+                s.sendall(b"GET / HTTP/1.1\r\nHost: api.ipify.org\r\n\r\n")
+                response = s.recv(1024)
+                return response.decode().split("\r\n\r\n")[1].strip()
+        except Exception:
+            return None
+            
+    def help_nat_traversal(self, port):
+        """Attempt to help with NAT traversal by sending packets to common public STUN servers"""
+        stun_servers = [
+            ("stun.l.google.com", 19302),
+            ("stun1.l.google.com", 19302),
+            ("stun2.l.google.com", 19302),
+            ("stun.voipbuster.com", 3478),
+            ("stun.ekiga.net", 3478)
+        ]
+        
+        for server in stun_servers:
+            try:
+                s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+                s.settimeout(1)
+                s.sendto(b"\x00\x01\x00\x00\x21\x12\xa4\x42" + os.urandom(12), server)
+                s.recvfrom(1024)
+                s.close()
+            except:
+                continue
+    
     def start_connection(self):
         try:
             port = int(self.port_entry.get())
@@ -718,6 +762,16 @@ class OrbApp:
             if self.host_mode:
                 try:
                     self.socket.bind(('0.0.0.0', port))
+                    # Start NAT traversal help in background
+                    threading.Thread(target=self.help_nat_traversal, args=(port,), daemon=True).start()
+                    
+                    # Show both public and local IP if available
+                    public_ip = self.get_public_ip()
+                    if public_ip:
+                        self.host_ip_var.set(f"HOST IP (Public): {public_ip}\nHOST IP (Local): {self.get_local_ip()}")
+                    else:
+                        self.host_ip_var.set(f"HOST IP: {self.get_local_ip()}\n(Public IP detection failed)")
+                    
                     self.status_var.set(f"ORB ONLINE: {self.host_name}")
                     self.status_indicator.config(fg=self.RECEIVE_COLOR)
                     self.log(f"Hosting ORB '{self.host_name}' on port {port}")
@@ -1068,17 +1122,6 @@ class OrbApp:
                 self.log(f"Error in update loop: {str(e)}", 'error')
                 if self.running:
                     raise
-    
-    def get_local_ip(self):
-        try:
-            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-            s.connect(("8.8.8.8", 80))
-            ip = s.getsockname()[0]
-            s.close()
-            return ip
-        except Exception as e:
-            self.log(f"Could not determine local IP: {str(e)}", 'warning')
-            return "127.0.0.1"
     
     def on_close(self):
         self.log("Application closing...")
