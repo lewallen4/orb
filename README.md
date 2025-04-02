@@ -23,7 +23,7 @@ ORB (Online Radio Bridge) is a secure, peer-to-peer voice chat application with 
 
 1. First, install the required dependencies:
 ```bash
-pip install tkinter pyaudio pycryptodome pqcrypto
+pip install tkinter pyaudio pycryptodome pqcrypto==0.1.0
 ```
 Note: On some systems, you may need to install tkinter separately:
 
