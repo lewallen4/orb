@@ -1,0 +1,15 @@
+2025-04-06 18:43:45,357 - INFO - ORB Host initialized on port 12345 with name 'Haunted-Shroud'
+2025-04-06 18:43:45,494 - INFO - Hosting ORB 'Haunted-Shroud'
+Public IP: 76.22.13.185
+Local IP: 10.0.0.129
+2025-04-06 18:43:45,646 - INFO - Audio streams started successfully
+2025-04-06 18:43:45,647 - INFO - Receive loop started
+2025-04-06 18:43:45,647 - INFO - ORB Host started successfully
+2025-04-06 18:43:52,649 - INFO - Client ('127.0.0.1', 61499) set name to: Specter-Labyrinth
+2025-04-06 18:43:52,649 - INFO - Stored avatar data for ('127.0.0.1', 61499): {'body': 1, 'top': 1, 'head': 1}
+2025-04-06 18:44:50,074 - INFO - Shutting down ORB Host...
+2025-04-06 18:44:50,074 - INFO - Stopping ORB Host...
+2025-04-06 18:44:50,074 - INFO - Socket closed
+2025-04-06 18:44:50,079 - INFO - Input stream closed
+2025-04-06 18:44:50,084 - INFO - Output stream closed
+2025-04-06 18:44:50,084 - INFO - ORB Host stopped
