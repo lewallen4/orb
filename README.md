@@ -58,7 +58,7 @@ python orb_host.py
 
 ### Joining a Channel
 
-1. Run"CLIENT ORB"
+1. Run "CLIENT ORB"
 2. Enter the host's IP address and port
 3. Enter your display name
 4. Click "CONNECT"
