@@ -39,8 +39,8 @@ sudo dnf install python3-tkinter
 2. Clone this repository or download the source file:
 
 ```bash
-git clone https://github.com/yourusername/orb-voice-chat.git
-cd orb-voice-chat
+git clone https://github.com/lewallen4/orb.git
+cd orb
 ```
 
 ## Usage
