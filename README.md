@@ -1,6 +1,6 @@
 # ORB v1.3 - Post-Quantum Encrypted Voice Chat
 
-ORB (Online Radio Bridge) is a secure, peer-to-peer voice chat application with post-quantum encryption capabilities. It features Kyber512 key exchange for establishing secure sessions and AES-256-GCM for encrypted audio transmission.
+ORB is a secure, peer-to-peer voice chat application with post-quantum encryption capabilities. It features Kyber512 key exchange for establishing secure sessions and AES-256-GCM for encrypted audio transmission.
 
 ## Features
 
