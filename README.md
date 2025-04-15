@@ -48,19 +48,17 @@ cd orb-voice-chat
 Run the application with:
 
 ```bash
-python orb.py
+python orb_host.py
 ```
 
 ### Hosting a Channel
 
-1. Click "HOST ORB"
-2. Enter your desired host name
-3. Click "CONNECT"
-4. Share your IP address and port with others
+1. Run "HOST ORB"
+2. Share your IP address and port with others
 
 ### Joining a Channel
 
-1. Click "JOIN ORB"
+1. Run"CLIENT ORB"
 2. Enter the host's IP address and port
 3. Enter your display name
 4. Click "CONNECT"
