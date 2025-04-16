@@ -50,7 +50,8 @@ Run the application with:
 ```bash
 python orb_host.py
 ```
-use the flag --no-encryption to disable encryption
+- use the flag --no-encryption if you want to disable encryption
+- currently use the subfolder v2, this is an active project.
 
 ### Hosting a Channel
 
