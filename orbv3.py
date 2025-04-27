@@ -169,7 +169,7 @@ class ORBv3:
                 bg=self.BG_COLOR, fg=self.FG_COLOR).pack(side=tk.LEFT)
         
         # Mode toggle button
-        self.mode_btn = tk.Button(header_frame, text="HOST MODE", 
+        self.mode_btn = tk.Button(header_frame, text="CLIENT MODE", 
                                  command=self.toggle_mode,
                                  font=self.custom_font, bd=0,
                                  bg=self.SECONDARY_COLOR, fg=self.FG_COLOR,
