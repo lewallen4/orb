@@ -1,117 +1,128 @@
-# ORB v1.3 - Post-Quantum Encrypted Voice Chat
+# ORB v3 - Post-Quantum Encrypted Voice Chat 🌀🔒
 
-ORB is a secure, peer-to-peer voice chat application with post-quantum encryption capabilities. It features Kyber512 key exchange for establishing secure sessions and AES-256-GCM for encrypted audio transmission.
+<p align="center">
+  <img src="assets/orb_demo.gif" width="30%" alt="ORB v3 Demo">
+</p>
 
-## Features
 
+## What is ORB v3? 🌟
+
+ORB v3 is a **secure, peer-to-peer voice communication tool** with built-in **post-quantum encryption** using ML-KEM-1024. It creates a virtual "chamber" where participants can communicate with encrypted audio and customize holographic avatars.
+
+Key features:
 - 🎙️ Real-time voice communication
-- 🔒 Post-quantum encryption using Kyber512
-- 🌐 Peer-to-peer networking (UDP)
-- 🖥️ Host or join voice channels
-- 🎚️ Audio device selection
+- 🔐 Quantum-resistant encryption
+- 👥 Participant management with custom names
+- 🎭 Unique holographic avatar system
+- 🌐 Both host/client modes
 - 📊 Visual activity indicators
-- 🧑‍🤝‍🧑 Participant list management
-- 🚀 NAT traversal assistance
 
-## Requirements
 
-- Python 3.7+
-- Windows, macOS, or Linux
-- Microphone and speakers/headphones
 
-## Installation
+## Quick Start 🚀
 
-1. First, install the required dependencies:
+### Prerequisites
+- Python 3.8+
+- Required packages:
+  
 ```bash
-pip install tkinter pyaudio pycryptodome pqcrypto==0.1.0
-```
-Note: On some systems, you may need to install tkinter separately:
-
-- Debian/Ubuntu:
-```bash
-sudo apt-get install python3-tk
-```
-- Fedora:
-```bash
-sudo dnf install python3-tkinter
+pip install pyaudio numpy pillow cryptography quantcrypt
 ```
 
-2. Clone this repository or download the source file:
+  ### Running ORB
+
+1. Clone this repository
 
 ```bash
-git clone https://github.com/lewallen4/orb.git
-cd orb
+git clone https://github.com/lewallen4/orb
 ```
 
-## Usage
-
-Run the application with:
-
+3. Run the application:
+ 
 ```bash
-python orb_host.py
+python orb_v3.py
 ```
-- use the flag --no-encryption if you want to disable encryption
-- currently use the subfolder v2, this is an active project.
 
-### Hosting a Channel
+3. Choose your mode:
 
-1. Run "HOST ORB"
-2. Share your IP address and port with others
+    Host Mode 🏰: Create a chamber for others to join
 
-### Joining a Channel
+    Client Mode 👤: Connect to an existing chamber
 
-1. Run "CLIENT ORB"
-2. Enter the host's IP address and port
-3. Enter your display name
-4. Click "CONNECT"
 
-### Controls
 
-- Spacebar: Push-to-talk (hold to transmit)
-- Click ORB: Toggle transmit mode
-- Test Audio: Verify your audio devices work
-- Toggle Encryption: Enable/disable encryption (default: on)
+## How It Works 🛠️ 
 
-## Encryption Details
 
-ORB uses a hybrid encryption scheme:
+### Technical Architecture
 
-1. Key Exchange: Kyber512 (post-quantum secure) for establishing shared secrets
-2. Audio Encryption: AES-256-GCM for encrypting the audio stream
-3. Key Rotation: Session keys are rotated periodically (default: 60 seconds)
+#### ORB v3 uses a hybrid architecture 🔮
 
-When encryption is enabled:
-- All key exchanges use Kyber512
-- Audio data is encrypted with AES-256-GCM
-- Each participant has unique session keys
-- Keys are derived using SHA-256 from the Kyber shared secret
+- UDP Networking: For low-latency voice transmission
+- ML-KEM-1024: Post-quantum key exchange
+- AES-256-GCM: For encrypted audio streams
+- PyAudio: Cross-platform audio handling
+- Tkinter: Modern GUI with dark theme
 
-## Troubleshooting
+#### Encryption Flow 🔐
 
-### Common Issues
+1. Key Exchange: ML-KEM-1024 establishes session keys
+2. Audio Encryption: AES-256-GCM encrypts all audio data
+3. Key Rotation: Regular key updates for forward secrecy
 
-1. No audio devices found:
-   - Verify your microphone/speakers are connected
-   - Check system audio settings
-   - Try different audio devices in the configuration
+#### Avatar System 👾
 
-2. Connection problems:
-   - Verify firewall settings allow UDP traffic on the selected port
-   - Try using a different port if the default is blocked
-   - For internet connections, ensure port forwarding is set up if behind NAT
+Participants can customize their holographic appearance with:
+- 3 Chassis options
+- 3 Vestment styles
+- 3 Cowl designs
 
-3. Encryption errors:
-   - Ensure all participants have encryption enabled/disabled consistently
-   - Try toggling encryption off if experiencing connection issues
+## Network Setup Tips 📡
 
-### Logs
+#### For best results, ensure:
 
-The application creates an orb.log file with detailed debug information for troubleshooting.
+- Port forwarding is enabled (default: 12345)
+- Firewall allows UDP traffic
+- NAT traversal is configured
 
-## License
+## Troubleshooting 🆘
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+#### Common issues:
 
-## Disclaimer
+- No audio devices found: Check microphone permissions
+- Connection failures: Verify host IP/port and password
+- Encryption errors: Try disabling/re-enabling encryption
 
-This is experimental software. While it implements strong encryption, no guarantee of complete security is provided. Use at your own risk.
+## Future Roadmap 🌈
+
+#### Planned enhancements:
+
+- More avatar options
+- A messageboard for dank memes
+- Hash based encryption verification
+- External connection verification detections
+
+## Contributing 🤝
+
+#### We welcome contributions! Please:
+
+1. Fork the repository
+2. Create a feature branch
+3. Submit a pull request
+
+## License 📜
+
+This project uses several open-source components:
+- [ORB v3](https://github.com/yourusername/orb-v3): [MIT](LICENSE.md)
+- [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/): [MIT](https://people.csail.mit.edu/hubert/pyaudio/#license)
+- [NumPy](https://numpy.org): [BSD-3-Clause](https://numpy.org/license/)
+- [Pillow (PIL Fork)](https://python-pillow.org): [HPND](https://github.com/python-pillow/Pillow/blob/master/LICENSE)
+- [Cryptography](https://cryptography.io): [Apache 2.0](https://github.com/pyca/cryptography/blob/main/LICENSE)
+- [QuantCrypt](https://github.com/randombit/quantcrypt): [MIT](https://github.com/randombit/quantcrypt/blob/master/LICENSE)
+- [Python](https://www.python.org): [PSF License](https://docs.python.org/3/license.html)
+
+All dependencies are used in compliance with their respective licenses.
+
+---
+
+"What the void calls eternity, we call intermission" 🔮
