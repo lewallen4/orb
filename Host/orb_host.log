@@ -1,7 +1,0 @@
-2025-04-05 00:45:37,329 - INFO - ORB Host initialized on port 12345 with name 'Specter-Chamber'
-2025-04-05 00:45:37,442 - INFO - Hosting ORB 'Specter-Chamber'
-Public IP: 76.22.13.185
-Local IP: 10.0.0.129
-2025-04-05 00:45:37,443 - INFO - Receive loop started
-2025-04-05 00:45:37,443 - INFO - ORB Host started successfully
-2025-04-05 00:45:40,259 - INFO - Client ('127.0.0.1', 61778) set name to: Eldritch-Shroud
